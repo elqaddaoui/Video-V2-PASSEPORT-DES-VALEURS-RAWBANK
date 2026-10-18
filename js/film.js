@@ -37,7 +37,7 @@
       // safety limiter: no effect can ever spike over the voice-over
       const lim = this.ctx.createDynamicsCompressor();
       lim.threshold.value = -20; lim.knee.value = 12; lim.ratio.value = 14; lim.attack.value = 0.003; lim.release.value = 0.2;
-      this.out.connect(lim); lim.connect(this.ctx.destination);
+      this.out.connect(lim); lim.connect(this.ctx.destination); this.lim = lim;   // lim = final SFX bus (the exporter taps it)
       const len = this.ctx.sampleRate * 2, b = this.ctx.createBuffer(1, len, this.ctx.sampleRate), d = b.getChannelData(0);
       for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
       this.noise = b;
@@ -211,6 +211,8 @@
       if (c >= 0) { sp.textContent = Film.captions[c].text; sp.classList.add("show"); } else sp.classList.remove("show");
     }
   }
+  // used by the offline exporter (js/export.js): jump to an exact film time and refresh DOM + captions
+  Film.renderAt = (t) => { Film.master.time(t, false); updateUI(t); };
   function bindUI() {
     const bar = $("bar");
     Film.markers.forEach((m) => {

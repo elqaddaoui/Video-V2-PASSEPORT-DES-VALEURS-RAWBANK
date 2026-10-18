@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RAWBANK – Passeport des Valeurs · Film preview (Scenes 1–7)</title>
+<title>RAWBANK – Passeport des Valeurs · Film preview (Scenes 1–8)</title>
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/scenes.css">
 </head>
@@ -141,7 +141,8 @@
     <div class="cast" id="cast-front"></div>
     </div><!-- /#cam -->
     <!-- Scene 7 duo: the collaborator (Amina, same wardrobe) + the manager, screen-space, between the Passeport (cam) and the graphics -->
-    <div id="duo"><div class="duo-c" id="duoA"></div><div class="duo-c" id="duoM"></div></div>
+    <div id="duo"><div class="duo-c" id="duoA"></div><div class="duo-c" id="duoM"></div>
+      <div class="s8hold" id="s8mid"></div><div class="duo-c" id="s8pL"></div><div class="duo-c" id="s8pK"></div><div class="duo-c" id="s8pN"></div></div>
 
     <!-- ===================== SCENES (one <section> per scene; shared elements above) ===================== -->
     <section class="scene" id="s01">
@@ -150,6 +151,17 @@
         <div class="ln l2"><span class="w">Mon</span> <span class="w">engagement</span> <span class="w">au</span> <span class="w">quotidien.</span></div>
       </div>
       <div class="flash" id="s01-flash"></div>
+      <!-- « votre compagnon pour les cinq prochaines années » – animated word-by-word with the voice-over (scene01_compagnon.js) -->
+      <div class="comp" id="s01-comp" aria-hidden="true">
+        <div class="cp-k"><span class="w">votre</span></div>
+        <div class="cp-big" id="cp-big"><span class="cp-word">compagnon</span><i class="cp-rule"></i></div>
+        <div class="cp-l"><span class="w">pour</span> <span class="w">les</span> <span class="w g">cinq</span></div>
+        <div class="cp-l"><span class="w g">prochaines</span> <span class="w g">années.</span></div>
+        <div class="cp-tl" id="cp-tl">
+          <i class="cp-line"></i><i class="cp-linef" id="cp-linef"></i>
+          <b class="cp-n">1</b><b class="cp-n">2</b><b class="cp-n">3</b><b class="cp-n">4</b><b class="cp-n cp-w5"><img src="assets/img/rawbank-mark-gold.png" alt=""></b>
+        </div>
+      </div>
     </section>
 
     <section class="scene" id="s02">
@@ -221,15 +233,14 @@
         <div class="pc-i"><div class="it"><b class="tk ar"></b><i class="ln"></i></div><div class="it"><b class="tk ar"></b><i class="ln"></i></div><div class="it"><b class="tk ar"></b><i class="ln"></i></div></div>
       </div>
       <i class="orb"></i><i class="orb"></i><i class="orb"></i><i class="orb"></i><i class="orb"></i>
+      <i id="s8seam"></i>
       <div id="bigtick"><i class="rg r1"></i><i class="rg r2"></i><div class="disc"></div>
         <svg viewBox="0 0 200 200"><path pathLength="1" d="M56 104 L88 136 L146 70" fill="none" stroke="#1B191B" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </section>
 
     <section class="scene" id="s08">
-      <div class="s8v" id="s8v1"><b class="s8m" id="s8m1"></b><span class="s8t"><span class="s8x">Intégrité</span><i class="s8u"></i></span></div>
-      <div class="s8v" id="s8v2"><b class="s8m" id="s8m2"></b><span class="s8t"><span class="s8x">Professionnalisme</span><i class="s8u"></i></span></div>
-      <div class="s8v" id="s8v3"><b class="s8m" id="s8m3"></b><span class="s8t"><span class="s8x">Éthique</span><i class="s8u"></i></span></div>
       <div class="flash" id="s8flash"></div>
+      <div class="s8fade" id="s8fade"></div>
       <div class="s8c" id="s8top">VOTRE PASSEPORT DES VALEURS</div>
       <div class="s8c" id="s8tag"><span class="w">Les</span> <span class="w">comportements</span> <span class="w">qui</span> <span class="w">nous</span> <span class="w">rassemblent.</span></div>
       <div class="s8c" id="s8sig"><span class="rb">RAWBANK</span> <span class="in">INSPIRE</span></div>
@@ -261,16 +272,38 @@
   <div id="bar"><div class="track"></div><div class="fill" id="fill"></div><div class="knob" id="knob"></div></div>
   <button id="btnCC">CC</button>
   <button id="btnSfx" class="active" title="Preview-only placeholder sound effects">SFX</button>
+  <button id="btnDl" title="Render &amp; download the film (MP4) and its captions">⬇ Download</button>
   <button id="btnFs">⛶</button>
+</div>
+
+<div id="dlPanel" role="dialog" aria-label="Download video">
+  <div class="dl-h"><b>Download film</b><button id="dlClose" aria-label="Close">✕</button></div>
+  <div class="dl-g"><span class="dl-l">Resolution</span>
+    <label><input type="radio" name="res" value="fhd" checked><i>Full HD<small>1920 × 1080</small></i></label>
+    <label><input type="radio" name="res" value="qhd"><i>2K<small>2560 × 1440</small></i></label></div>
+  <div class="dl-g"><span class="dl-l">Frame rate</span>
+    <label><input type="radio" name="fps" value="30" checked><i>30 fps<small>standard</small></i></label>
+    <label><input type="radio" name="fps" value="60"><i>60 fps<small>ultra-smooth</small></i></label></div>
+  <div class="dl-g col"><span class="dl-l">Captions</span>
+    <label class="ck"><input type="checkbox" id="dlSrt" checked><i>Also download the caption file (.srt)</i></label>
+    <label class="ck"><input type="checkbox" id="dlBurn"><i>Burn captions into the video (follows the CC button)</i></label></div>
+  <div class="dl-note" id="dlNote"></div>
+  <div class="dl-prog"><div id="dlBar"></div></div>
+  <div class="dl-msg" id="dlMsg">Exact pixel-for-pixel recording (3D book, effects, voice-over + sound effects). Your browser will ask what to share: choose <b>This tab</b> and keep it visible. Takes about the length of the film.</div>
+  <div class="dl-act"><button id="dlSrtOnly" class="ghost">Captions only (.srt)</button><button id="dlCancel" class="ghost cx">Cancel</button><button id="dlGo" class="go">Render &amp; download</button></div>
 </div>
 
 <audio id="vo" src="assets/audio/voiceover.mp3" preload="auto"></audio>
 
 <script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/mp4-muxer.js"></script>
 <script src="js/film.js"></script>
 <script src="js/lib/world.js"></script>
 <script src="js/lib/people.js"></script>
+<script src="js/lib/people_extra.js"></script>
+<script src="js/captions.js"></script>
 <script src="js/scenes/scene01.js"></script>
+<script src="js/scenes/scene01_compagnon.js"></script>
 <script src="js/scenes/scene02.js"></script>
 <script src="js/scenes/scene03.js"></script>
 <script src="js/scenes/scene04.js"></script>
@@ -278,6 +311,7 @@
 <script src="js/scenes/scene06.js"></script>
 <script src="js/scenes/scene07.js"></script>
 <script src="js/scenes/scene08.js"></script>
+<script src="js/export.js"></script>
 <script src="js/boot.js"></script>
 </body>
 </html>
