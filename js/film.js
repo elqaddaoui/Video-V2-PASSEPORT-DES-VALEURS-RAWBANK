@@ -211,6 +211,8 @@
       if (c >= 0) { sp.textContent = Film.captions[c].text; sp.classList.add("show"); } else sp.classList.remove("show");
     }
   }
+  // used by the offline exporter (js/export.js): jump to an exact film time and refresh DOM + captions
+  Film.renderAt = (t) => { Film.master.time(t, false); updateUI(t); };
   function bindUI() {
     const bar = $("bar");
     Film.markers.forEach((m) => {

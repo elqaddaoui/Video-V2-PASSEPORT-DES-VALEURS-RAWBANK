@@ -25,6 +25,11 @@ Drop PNGs (440×600 ratio) into `assets/passport/` – `cover.png`, `page-left.p
 Voice-over: `assets/audio/voiceover.mp3` (55.97 s). Timecodes follow the storyboard document.
 
 ## Scene 8 + audio notes
-- T7 "The Medal Releases The Values" (49.45→50.5): the two cards pour into the checkmark, which rises as a seal and sends three sparks that land on Intégrité / Professionnalisme / Éthique. End card from 53.4: logo returns from the corner bug to the centre, then VOTRE PASSEPORT DES VALEURS / Les comportements qui nous rassemblent. / RAWBANK INSPIRE, held to 59.32.
-- The voice-over is 55.97 s; after it ends the film clock continues on the system clock so the end card plays out fully.
-- Preview SFX are placeholders (button SFX toggles them): the output now goes through a limiter and the checkmark uses a soft `bloom` chime instead of the old low thump.
+- **Scene 8 starts at 46.75 s**, directly on Scene 7's last frame (same cards, same gold tick, no cut). Beats: the two cards flip inward like closing pages (46.78) and their gold edges meet at the checkmark; a seam of light opens the Passeport between Amina and the manager in one motion (47.38); the camera pulls back (48.0) revealing five colleagues (Amina, Léa, Naomi, Karim and the manager, `js/lib/people_extra.js`); each picks up their own Passeport (49.45 → 49.85); a slow push-in, then the picture dissolves into the **unchanged end card** from 53.2 (logo returns to the centre, VOTRE PASSEPORT DES VALEURS / Les comportements qui nous rassemblent. / RAWBANK INSPIRE, held to 59.32).
+- **Every character wears the RAWBANK « W » badge** on the chest of the suit (vector paths traced from the logo, `Film.People.badge`).
+- **Add-on, Scene 1 (6.5 → 10.5 s):** an animated typographic layer for the voice-over « votre compagnon pour les cinq prochaines années » (`js/scenes/scene01_compagnon.js`), timed to the spoken words; it only adds to the existing scene.
+- Full caption track: `js/captions.js`.
+
+## Download (⬇ button in the player bar)
+Opens a panel: **Full HD 1920×1080 / 2K 2560×1440**, **30 / 60 fps**, captions as a `.srt` file and/or burned into the picture (follows the CC button).
+`js/export.js` renders the film **frame by frame** (not a screen recording): master timeline at t → DOM snapshot (SVG `foreignObject`) → canvas → WebCodecs `VideoEncoder` (H.264, VP9 fallback) + the voice-over through `AudioEncoder` (AAC, Opus fallback) → MP4 via `assets/vendor/mp4-muxer.js` (MIT). Needs a WebCodecs browser (Chrome / Edge / Safari 16.4+). Render time grows with resolution and fps (keep the tab open; progress, ETA and Cancel are shown). API: `Film.exportVideo({res:'fhd'|'qhd', fps:30|60, srt, burn, from, to})`.
