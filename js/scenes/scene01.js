@@ -19,7 +19,8 @@
   Film.addMarkers([{ t: 0, label: "S1" }]);
 
   Film.addScene({
-    el: "#s01", start: S.start, end: S.end, hide: 7.6,
+    el: "#s01", start: S.start, end: S.end, hide: 10.7,   // hidden late: « votre compagnon… » (scene01_compagnon.js) plays on after the title clears
+   
     build(tl) {
       const logo = "#w-logo", gold = $$("#w-logo .lg-gold"), lets = $$("#w-logo .lg-let");
       const rig = "#w-rig", cover = "#w-cover", leaf = "#w-leaf1", W = $$("#s01-title .w");

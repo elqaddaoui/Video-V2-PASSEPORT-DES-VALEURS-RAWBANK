@@ -314,3 +314,40 @@
 #s8sig .rb,#s8sig .in{display:inline-block;will-change:transform,opacity,filter}
 #s8sig .rb{color:var(--ivory)}
 #s8sig .in{color:var(--gold);text-shadow:0 0 36px rgba(253,181,37,.55)}
+
+/* ============================================================
+   Scene 1/2 add-on · « votre compagnon pour les cinq prochaines années »  (6.6 → 10.4, in sync with the voice-over)
+   ============================================================ */
+#s01-comp{position:absolute;left:1130px;top:520px;width:730px;opacity:0;pointer-events:none}
+#s01-comp .cp-k{font-weight:600;font-size:44px;line-height:1;letter-spacing:.04em;color:rgba(250,246,238,.82);margin-bottom:6px;padding-left:6px}
+#s01-comp .cp-big{position:relative;display:inline-block;font-weight:800;font-size:122px;line-height:1.02;letter-spacing:-.03em;color:var(--gold);
+  text-shadow:0 0 54px rgba(253,181,37,.38),0 8px 30px rgba(0,0,0,.5);white-space:nowrap}
+#s01-comp .cp-word{display:inline-block}
+#s01-comp .cp-ch{display:inline-block;will-change:transform,opacity,filter}
+#s01-comp .cp-rule{position:absolute;left:4px;right:0;bottom:2px;height:6px;border-radius:3px;transform-origin:0 50%;transform:scaleX(0);
+  background:linear-gradient(90deg,var(--gold-lo),var(--gold),var(--gold-hi));box-shadow:0 0 22px rgba(253,181,37,.7)}
+#s01-comp .cp-l{margin-top:14px;font-weight:700;font-size:56px;line-height:1.08;letter-spacing:-.012em;color:var(--ivory);text-shadow:0 6px 28px rgba(0,0,0,.55);padding-left:6px;white-space:nowrap}
+#s01-comp .cp-l+.cp-l{margin-top:2px}
+#s01-comp .w{display:inline-block;will-change:transform,opacity,filter}
+#s01-comp .w.g{color:var(--gold)}
+#s01-comp .cp-tl{position:relative;height:64px;width:560px;margin:30px 0 0 6px;display:flex;justify-content:space-between}
+#s01-comp .cp-line,#s01-comp .cp-linef{position:absolute;left:30px;right:30px;top:30px;height:4px;border-radius:2px;background:rgba(250,246,238,.2)}
+#s01-comp .cp-linef{right:auto;width:0;background:linear-gradient(90deg,var(--gold-lo),var(--gold),var(--gold-hi));box-shadow:0 0 14px rgba(253,181,37,.7)}
+#s01-comp .cp-n{position:relative;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;font-size:27px;font-weight:800;color:var(--gold);
+  background:radial-gradient(circle at 35% 28%,#3B3436,#171417 70%);box-shadow:0 0 0 3px rgba(253,181,37,.35),0 10px 24px rgba(0,0,0,.45)}
+#s01-comp .cp-w5 img{width:30px;height:auto;display:block}
+
+/* ---- Scene 8 (new) · the five colleagues ---- */
+.duo-c>svg:first-child{-webkit-mask-image:linear-gradient(180deg,#000 calc(var(--mk,3000) * 1px),transparent calc(var(--mk,3000) * 1px + 120px));mask-image:linear-gradient(180deg,#000 calc(var(--mk,3000) * 1px),transparent calc(var(--mk,3000) * 1px + 120px))}
+.duo-c .cast-svg{position:absolute;left:0;top:0}
+.s8hold{position:absolute;left:0;top:0;width:0;height:0;opacity:0;will-change:transform,opacity}
+.s8fr{position:absolute;left:0;top:0;width:800px;height:1400px;opacity:0;will-change:transform,opacity}
+.s8bk{position:absolute;left:-220px;top:-300px;width:440px;height:600px;transform-origin:50% 50%;filter:drop-shadow(0 0 38px rgba(253,181,37,.45)) drop-shadow(0 22px 30px rgba(0,0,0,.55))}
+.s8bk .cover-art{border-radius:6px 16px 16px 6px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.s8bk .bk-pg{position:absolute;right:-9px;top:8px;bottom:8px;width:14px;border-radius:0 8px 8px 0;background:repeating-linear-gradient(180deg,#F6F0E0 0 3px,#D8CFB8 3px 4px)}
+#s8seam{position:absolute;left:957px;top:372px;width:6px;height:330px;z-index:1;border-radius:3px;opacity:0;pointer-events:none;transform-origin:50% 50%;
+  background:linear-gradient(180deg,var(--gold-hi),var(--gold) 50%,var(--gold-lo));box-shadow:0 0 30px rgba(253,181,37,.9),0 0 90px rgba(253,181,37,.6)}
+.rb-badge{filter:drop-shadow(0 0 0 rgba(253,181,37,0))}
+
+/* Scene 8 · gold haze that blooms during the pull-back */
+.s8fade{position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(60% 55% at 50% 52%,rgba(244,196,92,.22),rgba(244,196,92,.06) 55%,transparent 80%)}

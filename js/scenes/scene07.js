@@ -16,8 +16,8 @@
    ============================================================ */
 (function () {
   const $$ = (q) => Array.from(document.querySelectorAll(q));
-  Film.addMarkers([{ t: 49.76, label: "S8 ▸ cut", cut: true }]);
-  Film.previewEnd = 49.76;
+  Film.addMarkers([{ t: 46.75, label: "S8 ▸ cut", cut: true }]);
+  Film.previewEnd = 46.75;
   Film.cam = Object.assign(Film.cam || {}, { C7: { scale: 0.45, x: 220, y: 42 } });
 
   /* icons of the two cards */
@@ -26,7 +26,7 @@
   document.getElementById("pcRic").innerHTML = S('<path pathLength="1" d="M18 54 L32 40 L42 48 L60 28"/><path pathLength="1" d="M48 28 H60 V40"/>');
 
   Film.addScene({
-    el: "#s07", start: 40.36, end: 49.76, at: 0, show: 39.8, hide: 56.6,   // hide late: the checkmark medal travels into Scene 8
+    el: "#s07", start: 40.36, end: 46.75, at: 0, show: 39.8, hide: 56.6,   // hide late: the checkmark medal travels into Scene 8
     build(tl) {
       const C = Film.cam;
       const A = "#duoA", M = "#duoM", cL = "#pcL", cR = "#pcR";
@@ -105,8 +105,8 @@
       unfold(cR, -300, 9, 41.15, pathsR, itR);
 
       /* ---- life: breathing, nods, blinks, glances ---- */
-      tl.fromTo(A, { y: 324 }, { y: 330, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false }, 41.4)
-        .fromTo(M, { y: 324 }, { y: 330, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false }, 41.5)
+      tl.fromTo(A, { y: 324 }, { y: 330, duration: 1.3375, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 41.4)
+        .fromTo(M, { y: 324 }, { y: 330, duration: 1.3125, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 41.5)
         .to("#amina-smile-d", { scaleY: 1.25, duration: 0.7, ease: "sine.inOut" }, 41.0)
         .to("#mgr-smile-x", { scaleY: 1.2, duration: 0.7, ease: "sine.inOut" }, 41.2)
         .to("#amina-head-d", { rotation: 2.2, y: 3, duration: 0.55, yoyo: true, repeat: 1, ease: "sine.inOut" }, 41.6)       // she nods on « J'échange »
@@ -140,16 +140,8 @@
         .fromTo("#bigtick .r2", { scale: 1, opacity: 0.7 }, { scale: 3.2, opacity: 0, duration: 1.2, ease: "power2.out", immediateRender: false }, 45.2)
         .to(Film.world.dust, { v: 2.4, duration: 0.4, ease: "power2.out" }, 44.95)
         .to(Film.world.dust, { v: 1.2, duration: 1.4, ease: "power2.inOut" }, 45.4)
-        .to("#bigtick", { scale: 1.06, duration: 1.1, yoyo: true, repeat: 1, ease: "sine.inOut" }, 45.8);
+        .to("#bigtick", { scale: 1.06, duration: 0.95, ease: "sine.inOut" }, 45.8);
 
-      /* ---- the commitment: both nod together, smiles widen, the rail completes ---- */
-      tl.to("#amina-head-d", { rotation: 2.4, y: 4, duration: 0.6, yoyo: true, repeat: 1, ease: "sine.inOut" }, 47.85)
-        .to("#mgr-head-x", { rotation: -2.4, y: 4, duration: 0.6, yoyo: true, repeat: 1, ease: "sine.inOut" }, 47.85)
-        .to("#amina-smile-d, #mgr-smile-x", { scaleY: 1.5, duration: 0.5, ease: "sine.inOut" }, 47.9)
-        .to("#rail .st:nth-of-type(5)", { scale: 1.3, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut" }, 47.9)
-        .call(Film.fx("shimmer", 0.05, 1568), null, 47.9)
-        .to("#w-halo", { opacity: 1.0, scale: 1.12, duration: 1.4, ease: "sine.inOut" }, 47.9)
-        .to(Film.world.dust, { v: 1.8, duration: 0.5, ease: "power2.out" }, 47.9);
       // END-OF-SCENE-7 FRAME: duo + two cards + big gold tick + « 05 – … » band + rail complete.
     },
   });
