@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RAWBANK – Passeport des Valeurs · Film preview (Scenes 1–7)</title>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/scenes.css">
+</head>
+<body>
+<div id="viewport">
+  <div id="stage" aria-label="RAWBANK Passeport des Valeurs – 1920×1080 preview">
+
+    <!-- ===================== WORLD (shared by every scene) ===================== -->
+    <div id="world">
+      <div class="bg"></div>
+      <div class="halo" id="w-halo"></div>
+      <div class="rays" id="w-rays"></div>
+      <canvas id="w-dust" width="1920" height="1080"></canvas>
+    </div>
+
+    <!-- RAWBANK logo, built from the supplied artwork (3 gold strokes + 6 letters). Becomes the corner brand bug. -->
+    <div class="logo" id="w-logo">
+      <img class="lg-gold" data-k="0" src="assets/img/logo-gold-0.png" alt="">
+      <img class="lg-gold" data-k="1" src="assets/img/logo-gold-1.png" alt="">
+      <img class="lg-gold" data-k="2" src="assets/img/logo-gold-2.png" alt="">
+      <img class="lg-let" src="assets/img/logo-letter-0.png" alt="">
+      <img class="lg-let" src="assets/img/logo-letter-1.png" alt="">
+      <img class="lg-let" src="assets/img/logo-letter-2.png" alt="">
+      <img class="lg-let" src="assets/img/logo-letter-3.png" alt="">
+      <img class="lg-let" src="assets/img/logo-letter-4.png" alt="">
+      <img class="lg-let" src="assets/img/logo-letter-5.png" alt="">
+      <div class="lg-sheen" id="w-sheen"></div>
+    </div>
+
+    <!-- #cam = the film camera. Everything that lives "in the shot" (collaborator, Passeport, hands) sits inside it,
+         so pull-backs / push-ins are ONE continuous move (no cuts). Screen-space graphics sit outside it. -->
+    <div id="cam">
+    <div class="cast" id="cast-back"></div>
+    <!-- THE PASSEPORT: one persistent 3D object, re-posed by each scene -->
+    <div class="scene3d" id="w-book3d">
+      <div class="floor" id="w-floor"></div>
+      <div class="rig" id="w-rig">
+        <div class="book" id="w-book">
+          <div class="back back-l" id="w-backL"></div>
+          <div class="back" id="w-back"></div>
+          <div class="spine" id="w-spine"></div>
+          <div class="edge e4"></div><div class="edge e3"></div><div class="edge e2"></div><div class="edge e1"></div>
+
+          <!-- R3 · base page under everything = "Conditions générales et engagements" (Scene 4 turns to it) -->
+          <div class="paper" id="evalPage"><div class="ev">
+              <div class="ev-head"><i class="bar h"></i><b class="ev-tick" id="evTick"></b></div>
+              <div class="ev-rows">
+                <div class="er"><b class="eic" data-v="ambition"></b><i class="lb"></i><div class="pips"><b></b><b></b><b></b><b></b></div></div>
+                <div class="er"><b class="eic" data-v="initiative"></b><i class="lb"></i><div class="pips"><b></b><b></b><b></b><b></b></div></div>
+                <div class="er"><b class="eic" data-v="innovation"></b><i class="lb"></i><div class="pips"><b></b><b></b><b></b><b></b></div></div>
+                <div class="er"><b class="eic" data-v="collaboration"></b><i class="lb"></i><div class="pips"><b></b><b></b><b></b><b></b></div></div>
+                <div class="er"><b class="eic" data-v="performance"></b><i class="lb"></i><div class="pips"><b></b><b></b><b></b><b></b></div></div>
+              </div>
+              <div class="ev-foot"><i class="bar w85"></i><i class="bar w60"></i></div>
+            </div><div class="pg-shade"></div></div>
+
+          <!-- LEAF 3 · front = R3 "Conditions générales…" (Scenes 4-5) · back = L4 semester calendar (revealed in Scene 6, with R4 the behavioural grid under it) -->
+          <div class="leaf" id="w-leaf3">
+          <div class="paper face-f" id="condPage"><div class="cp">
+              <div class="cp-head"><h3><span class="hline"><i class="mk"></i>Conditions générales</span><br><span class="hline"><i class="mk"></i>et engagements du détenteur</span></h3><i class="hl"></i></div>
+              <div class="cl"><b class="bu"></b><div class="tx"><i class="ln w95"></i><i class="ln w90"><i class="mk"></i></i><i class="ln w70"></i></div></div>
+              <div class="cl"><b class="bu"></b><div class="tx"><i class="ln w90"><i class="mk"></i></i><i class="ln w95"><i class="mk"></i></i><i class="ln w60"></i></div></div>
+              <div class="cl"><b class="bu"></b><div class="tx"><i class="ln w85"><i class="mk"></i></i><i class="ln w95"></i><i class="ln w75"></i></div></div>
+              <div class="cl"><b class="bu"></b><div class="tx"><i class="ln w95"></i><i class="ln w80"><i class="mk"></i></i><i class="ln w65"></i></div></div>
+              <div class="cp-ack"><b class="cb"></b><div class="tx"><i class="ln w85"></i><i class="ln w55"></i></div></div>
+              <div class="pen" id="pen"><svg viewBox="0 0 72 72" width="72" height="72"><path d="M4 68 L14 50 L22 58Z" fill="#1B191B"/><path d="M14 50 L52 12 L68 28 L22 58Z" fill="#FDB525"/><path d="M52 12 L60 4 L72 16 L68 28Z" fill="#1B191B"/></svg></div>
+            </div>
+            <img class="slot" src="assets/passport/conditions.png" alt="" onerror="this.remove()"><div class="pg-shade"></div></div>
+            <div class="paper face-b" id="calPage"><div class="cal">
+              <div class="cal-head"><b class="cal-ic" id="calIc"></b><i class="bar h"></i></div>
+              <div class="cal-grid" id="calGrid"></div>
+              <div class="sem" id="calSem"><b></b><b></b><b></b><b></b><b></b><b></b></div>
+              <div class="cal-foot"><i class="bar w85"></i><i class="bar w60"></i></div>
+            </div><div class="pg-shade flip"></div></div>
+          </div>
+
+          <!-- LEAF 2 · front = R2 "Mon identité" (revealed when leaf 1 turns in Scene 3, turned away in Scene 4) · back = L2 -->
+          <div class="leaf" id="w-leaf2">
+            <div class="paper face-f" id="idPage">
+              <div class="idp">
+              <div class="idp-head"><h3>Mon identité</h3><i class="hl" id="idHL"></i></div>
+              <div class="idp-top">
+                <div class="idp-photo"><svg viewBox="0 0 80 96"><g id="idPhoto" fill="#BDB39B"><circle cx="40" cy="36" r="17"/><path d="M8 96 C8 66 22 58 40 58 C58 58 72 66 72 96Z"/></g></svg></div>
+                <div class="idp-col"><div class="fld"><i class="lab"></i><div class="val"><div class="ink"></div></div></div><div class="fld"><i class="lab"></i><div class="val"><div class="ink"></div></div></div></div>
+              </div>
+              <div class="fld"><i class="lab"></i><div class="val"><div class="ink"></div></div></div>
+              <div class="fld"><i class="lab"></i><div class="val"><div class="ink"></div></div></div>
+              <div class="fld"><i class="lab"></i><div class="val"><div class="ink"></div></div></div>
+              <div class="idp-sign">
+                <i class="lab"></i>
+                <div class="box">
+                  <svg viewBox="0 0 320 90" class="sigsvg">
+                    <path id="sigA" pathLength="1" d="M8 62 C22 18 40 12 44 40 S36 80 58 58 S80 20 92 46 C98 62 108 62 116 44 C124 26 142 24 142 42 C142 58 130 66 154 56 C178 44 198 36 216 46 C234 56 248 64 264 44 C272 34 284 30 306 34"/>
+                    <path id="sigB" pathLength="1" d="M26 78 C120 68 204 76 302 62"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <img class="slot" src="assets/passport/identite.png" alt="" onerror="this.remove()">
+              <div class="pg-shade"></div>
+            </div>
+            <div class="paper face-b"><div class="pp-skel pp-l"><i class="bar h"></i><i class="bar w95"></i><i class="bar w85"></i><i class="bar w90"></i><i class="bar w60"></i><i class="bar w95"></i></div>
+              <img class="slot" src="assets/passport/page-left-3.png" alt="" onerror="this.remove()"><div class="pg-shade flip"></div></div>
+          </div>
+
+          <!-- LEAF 1 · turns in Scene 3. front = R1 (visible in Scenes 1-2), back = L1 -->
+          <div class="leaf" id="w-leaf1">
+            <div class="paper face-f"><div class="pp-skel pp-r anim1"><i class="bar h"></i><i class="bar w80"></i><i class="bar w95"></i><i class="bar w70"></i>
+              <div class="dots"><b></b><b></b><b></b><b></b><b></b></div><i class="bar w60"></i><i class="bar w85"></i><div class="sig"></div></div>
+              <img class="slot" src="assets/passport/page-right.png" alt="" onerror="this.remove()"><div class="pg-shade"></div></div>
+            <div class="paper face-b"><div class="pp-skel pp-l"><i class="bar h"></i><i class="bar w95"></i><i class="bar w85"></i><i class="bar w90"></i><i class="bar w60"></i><i class="bar w95"></i><i class="bar w75"></i></div>
+              <img class="slot" src="assets/passport/page-left-2.png" alt="" onerror="this.remove()"><div class="pg-shade flip"></div></div>
+          </div>
+
+          <!-- COVER: art outside, L0 inside -->
+          <div class="cover" id="w-cover">
+            <div class="face-f cover-art">
+              <div class="leather"></div><div class="frame"></div>
+              <img class="emb" src="assets/img/rawbank-mark-gold.png" alt="">
+              <div class="ctitle"><span>PASSEPORT</span><span>DES VALEURS</span></div>
+              <div class="foil" id="w-foil"></div>
+              <img class="slot" src="assets/passport/cover.png" alt="" onerror="this.remove()">
+              <div class="hinge"></div>
+            </div>
+            <div class="paper face-b">
+              <div class="pp-skel pp-l anim1"><img class="wm" src="assets/img/rawbank-mark-gold.png" alt="">
+                <i class="bar h"></i><i class="bar w85"></i><i class="bar w95"></i><i class="bar w75"></i><i class="bar w90"></i><i class="bar w60"></i></div>
+              <img class="slot" src="assets/passport/page-left.png" alt="" onerror="this.remove()">
+              <div class="pg-shade flip"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cast" id="cast-front"></div>
+    </div><!-- /#cam -->
+    <!-- Scene 7 duo: the collaborator (Amina, same wardrobe) + the manager, screen-space, between the Passeport (cam) and the graphics -->
+    <div id="duo"><div class="duo-c" id="duoA"></div><div class="duo-c" id="duoM"></div></div>
+
+    <!-- ===================== SCENES (one <section> per scene; shared elements above) ===================== -->
+    <section class="scene" id="s01">
+      <div class="title" id="s01-title">
+        <div class="ln l1"><span class="w">Mon</span> <span class="w">Passeport</span> <span class="w">des</span> <span class="w">Valeurs</span> <span class="w">–</span></div>
+        <div class="ln l2"><span class="w">Mon</span> <span class="w">engagement</span> <span class="w">au</span> <span class="w">quotidien.</span></div>
+      </div>
+      <div class="flash" id="s01-flash"></div>
+    </section>
+
+    <section class="scene" id="s02">
+      <div class="rows" id="s02-rows">
+        <i class="spineLine" id="s02-line"></i>
+        <div class="row"><div class="med" data-ico="values"></div><div class="rt"><span class="n w">5</span> <span class="w">valeurs</span> <span class="w dsh">–</span></div></div>
+        <div class="row"><div class="med" data-ico="eval"></div><div class="rt"><span class="n w">5</span> <span class="w">ans</span> <span class="w dsh">–</span></div></div>
+        <div class="row"><div class="med" data-ico="progress"></div><div class="rt"><span class="n w">1</span> <span class="w">engagement</span> <span class="w">personnel</span></div></div>
+      </div>
+    </section>
+
+    <!-- persistent step layers (outside the sections so they never pop on/off at a seam) -->
+    <div id="dark"></div>
+    <div id="veil"></div>
+    <div id="stepdim"></div>
+    <div id="topdim"></div>
+
+    <section class="scene stepsec" id="s03">
+      <div class="s3text" id="s03-text">
+        <div class="num"><span class="nn">01</span><span class="dsh">–</span></div>
+        <div class="phr"><span class="w">Je</span> <span class="w">complète</span><br><span class="w">et</span> <span class="w">je</span> <span class="w">signe.</span></div>
+      </div>
+    </section>
+
+    <section class="scene stepsec" id="s04">
+      <div class="s3text">
+        <div class="num"><span class="nn">02</span><span class="dsh">–</span></div>
+        <div class="phr"><span class="w">Je</span> <span class="w">prends</span> <span class="w">connaissance</span><br><span class="w">de</span> <span class="w">mes</span> <span class="w">engagements.</span></div>
+      </div>
+    </section>
+
+    <section class="scene stepsec" id="s05">
+      <div class="s3text">
+        <div class="num"><span class="nn">03</span><span class="dsh">–</span></div>
+        <div class="phr">
+          <span class="ln ln1"><span class="w">Je</span> <span class="w">comprends.</span></span>
+          <span class="ln ln2"><span class="w">J’adopte.</span></span>
+          <span class="ln ln3"><span class="w">J’incarne.</span></span>
+        </div>
+      </div>
+      <div class="vgrid" id="s05-cards">
+        <div class="vcard" data-v="ambition"><i class="sw"></i><b class="bdg"></b><div class="vc-ico"></div><h4>Ambition</h4><div class="vc-b"><i></i><i></i><i></i></div></div>
+        <div class="vcard" data-v="initiative"><i class="sw"></i><b class="bdg"></b><div class="vc-ico"></div><h4>Initiative</h4><div class="vc-b"><i></i><i></i><i></i></div></div>
+        <div class="vcard" data-v="innovation"><i class="sw"></i><b class="bdg"></b><div class="vc-ico"></div><h4>Innovation</h4><div class="vc-b"><i></i><i></i><i></i></div></div>
+        <div class="vcard" data-v="collaboration"><i class="sw"></i><b class="bdg"></b><div class="vc-ico"></div><h4>Collaboration</h4><div class="vc-b"><i></i><i></i><i></i></div></div>
+        <div class="vcard" data-v="performance"><i class="sw"></i><b class="bdg"></b><div class="vc-ico"></div><h4>Performance</h4><div class="vc-b"><i></i><i></i><i></i></div></div>
+      </div>
+    </section>
+
+    <section class="scene stepsec" id="s06">
+      <div class="s3text">
+        <div class="num"><span class="nn">04</span><span class="dsh">–</span></div>
+        <div class="phr"><span class="ln"><span class="w">Je</span> <span class="w">fais</span> <span class="w">mon</span> <span class="w">autoévaluation.</span></span></div>
+      </div>
+      <i class="ripple" id="rip1"></i><i class="ripple" id="rip2"></i>
+    </section>
+
+    <section class="scene stepsec topband" id="s07">
+      <div class="s3text">
+        <div class="num"><span class="nn">05</span><span class="dsh">–</span></div>
+        <div class="phr"><span class="ln"><span class="w">J’échange.</span> <span class="w">Je</span> <span class="w">progresse.</span></span><span class="ln"><span class="w">Je</span> <span class="w">m’engage.</span></span></div>
+      </div>
+      <div class="pcard" id="pcL"><i class="sw"></i>
+        <div class="pc-h"><b class="pc-ic" id="pcLic"></b><h4>Comportements<br>adoptés</h4></div>
+        <div class="pc-i"><div class="it"><b class="tk"></b><i class="ln"></i></div><div class="it"><b class="tk"></b><i class="ln"></i></div><div class="it"><b class="tk"></b><i class="ln"></i></div></div>
+      </div>
+      <div class="pcard" id="pcR"><i class="sw"></i>
+        <div class="pc-h"><b class="pc-ic" id="pcRic"></b><h4>Comportements<br>à améliorer</h4></div>
+        <div class="pc-i"><div class="it"><b class="tk ar"></b><i class="ln"></i></div><div class="it"><b class="tk ar"></b><i class="ln"></i></div><div class="it"><b class="tk ar"></b><i class="ln"></i></div></div>
+      </div>
+      <i class="orb"></i><i class="orb"></i><i class="orb"></i><i class="orb"></i><i class="orb"></i>
+      <div id="bigtick"><i class="rg r1"></i><i class="rg r2"></i><div class="disc"></div>
+        <svg viewBox="0 0 200 200"><path pathLength="1" d="M56 104 L88 136 L146 70" fill="none" stroke="#1B191B" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </section>
+
+    <section class="scene" id="s08">
+      <div class="s8v" id="s8v1"><b class="s8m" id="s8m1"></b><span class="s8t"><span class="s8x">Intégrité</span><i class="s8u"></i></span></div>
+      <div class="s8v" id="s8v2"><b class="s8m" id="s8m2"></b><span class="s8t"><span class="s8x">Professionnalisme</span><i class="s8u"></i></span></div>
+      <div class="s8v" id="s8v3"><b class="s8m" id="s8m3"></b><span class="s8t"><span class="s8x">Éthique</span><i class="s8u"></i></span></div>
+      <div class="flash" id="s8flash"></div>
+      <div class="s8c" id="s8top">VOTRE PASSEPORT DES VALEURS</div>
+      <div class="s8c" id="s8tag"><span class="w">Les</span> <span class="w">comportements</span> <span class="w">qui</span> <span class="w">nous</span> <span class="w">rassemblent.</span></div>
+      <div class="s8c" id="s8sig"><span class="rb">RAWBANK</span> <span class="in">INSPIRE</span></div>
+    </section>
+
+    <!-- step tracker (numbered 5 steps) – persistent from Scene 3 onward -->
+    <div id="rail">
+      <i class="rl"></i><i class="rlf" id="rail-fill"></i>
+      <b class="st">01</b><b class="st">02</b><b class="st">03</b><b class="st">04</b><b class="st">05</b>
+    </div>
+    <!-- ===================== /SCENES ===================== -->
+
+    <div id="vignette"></div>
+    <div id="grain"></div>
+    <div id="cc"><span></span></div>
+  </div>
+</div>
+
+<div id="overlay">
+  <div class="play"><svg viewBox="0 0 24 24"><path d="M6 4l15 8-15 8z"/></svg></div>
+  <h1>RAWBANK · Passeport des Valeurs — Scenes 1 to 8</h1>
+  <p>Click to play with the voice-over. Space = play/pause · ← → = ±1 s · C = captions · F = fullscreen.</p>
+</div>
+
+<div id="chrome">
+  <button id="btnPlay">▶ Play</button>
+  <button id="btnRestart">⟲</button>
+  <span id="time">00:00.00 / 00:00.00</span>
+  <div id="bar"><div class="track"></div><div class="fill" id="fill"></div><div class="knob" id="knob"></div></div>
+  <button id="btnCC">CC</button>
+  <button id="btnSfx" class="active" title="Preview-only placeholder sound effects">SFX</button>
+  <button id="btnFs">⛶</button>
+</div>
+
+<audio id="vo" src="assets/audio/voiceover.mp3" preload="auto"></audio>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="js/film.js"></script>
+<script src="js/lib/world.js"></script>
+<script src="js/lib/people.js"></script>
+<script src="js/scenes/scene01.js"></script>
+<script src="js/scenes/scene02.js"></script>
+<script src="js/scenes/scene03.js"></script>
+<script src="js/scenes/scene04.js"></script>
+<script src="js/scenes/scene05.js"></script>
+<script src="js/scenes/scene06.js"></script>
+<script src="js/scenes/scene07.js"></script>
+<script src="js/scenes/scene08.js"></script>
+<script src="js/boot.js"></script>
+</body>
+</html>

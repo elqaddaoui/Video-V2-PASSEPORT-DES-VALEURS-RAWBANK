@@ -1,0 +1,316 @@
+/* ============================================================
+   SCENE STYLES  (append one block per scene)
+   Shared "RAWBANK film" components used by every scene:
+   .bg  .halo  .rays  .logo  .scene3d/.book (the Passeport)  .title
+   ============================================================ */
+
+/* ---------- shared: atmosphere ---------- */
+#world{position:absolute;inset:0}
+#world .bg{position:absolute;inset:0;
+  background:
+    radial-gradient(60% 55% at 32% 56%,rgba(253,181,37,.13),transparent 70%),
+    radial-gradient(90% 90% at 50% 110%,#2A2113 0%,transparent 60%),
+    linear-gradient(180deg,#0F0E11 0%,#0A090B 100%)}
+#world .halo{position:absolute;left:50%;top:50%;width:1500px;height:1500px;margin:-750px 0 0 -750px;border-radius:50%;opacity:0;
+  background:radial-gradient(circle,rgba(253,181,37,.42) 0%,rgba(253,181,37,.14) 28%,transparent 62%);mix-blend-mode:screen}
+#world .rays{position:absolute;left:50%;top:50%;width:2600px;height:2600px;margin:-1300px 0 0 -1300px;opacity:0;mix-blend-mode:screen;
+  background:repeating-conic-gradient(from 0deg,rgba(253,181,37,.0) 0deg,rgba(253,181,37,.11) 4deg,rgba(253,181,37,0) 9deg,rgba(253,181,37,0) 18deg);
+  -webkit-mask-image:radial-gradient(circle,#000 0%,transparent 48%);mask-image:radial-gradient(circle,#000 0%,transparent 48%)}
+#world canvas{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen}
+.scene .flash{position:absolute;inset:0;opacity:0;pointer-events:none;mix-blend-mode:screen;
+  background:radial-gradient(60% 60% at 40% 55%,rgba(255,226,150,.95),rgba(253,181,37,.35) 45%,transparent 75%)}
+
+/* ---------- shared: RAWBANK logo (supplied artwork, split into layers) ---------- */
+.logo{position:absolute;left:448px;top:422px;width:1024px;height:236px;transform-origin:0 0;will-change:transform}
+.logo img{position:absolute;left:0;top:0;width:1024px;height:236px;display:block}
+.logo .lg-gold{filter:drop-shadow(0 0 22px rgba(253,181,37,.45))}
+
+/* ---------- shared: the Passeport (3D) ---------- */
+.scene3d{position:absolute;inset:0;perspective:2400px;perspective-origin:50% 46%}
+.rig{position:absolute;left:0;top:0;width:0;height:0;transform-style:preserve-3d}
+.book{position:absolute;left:0;top:-300px;width:440px;height:600px;transform-style:preserve-3d}
+.book>*{position:absolute;left:0;top:0;width:440px;height:600px}
+.book .back{background:linear-gradient(135deg,#2A2528,#171417);border-radius:4px 14px 14px 4px;transform:translateZ(-15px)}
+.book .back.back-l{left:-440px;border-radius:14px 4px 4px 14px;opacity:0;background:linear-gradient(225deg,#2A2528,#171417)}
+.book .spine{width:16px;left:0;top:0;transform-origin:0 0;transform:rotateY(90deg) translateZ(0);height:600px;
+  background:linear-gradient(90deg,#1A171A,#2E292D 50%,#1A171A);border-radius:3px;box-shadow:inset 0 0 0 1px rgba(253,181,37,.25)}
+.book .spine::before,.book .spine::after{content:"";position:absolute;left:3px;right:3px;height:2px;background:rgba(253,181,37,.7)}
+.book .spine::before{top:60px}.book .spine::after{bottom:60px}
+.book .edge.e1{transform:translateZ(-3px) translateX(2px)}
+.book .edge.e2{transform:translateZ(-6px) translateX(4px)}
+.book .edge.e3{transform:translateZ(-9px) translateX(5px)}
+.book .edge.e4{transform:translateZ(-12px) translateX(6px)}
+.book .edge{background:linear-gradient(90deg,#E9E0CB,#F7F1E3);border-radius:2px 8px 8px 2px;box-shadow:inset -2px 0 0 rgba(0,0,0,.08)}
+.paper{background:linear-gradient(100deg,#EFE7D4 0%,#FBF8F0 14%,#FCFAF4 70%,#F2EBDA 100%);border-radius:3px 9px 9px 3px;overflow:hidden;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.paper.face-b{border-radius:9px 3px 3px 9px;background:linear-gradient(260deg,#EFE7D4 0%,#FBF8F0 14%,#FCFAF4 70%,#F2EBDA 100%);transform:rotateY(180deg)}
+.pg-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(60,40,10,.34) 0%,rgba(60,40,10,.10) 6%,transparent 18%,transparent 88%,rgba(60,40,10,.10) 100%)}
+.pg-shade.flip{background:linear-gradient(270deg,rgba(60,40,10,.34) 0%,rgba(60,40,10,.10) 6%,transparent 18%,transparent 88%,rgba(60,40,10,.10) 100%)}
+.slot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3}   /* drop real Passeport page art here */
+
+/* placeholder page skeleton (replaced by the real pages via .slot) */
+.pp-skel{position:absolute;inset:0;padding:46px 44px 40px 52px;display:flex;flex-direction:column;gap:15px}
+.pp-skel.pp-l{padding:46px 52px 40px 44px}
+.pp-skel .bar{display:block;height:11px;border-radius:6px;background:rgba(27,25,27,.11)}
+.pp-skel .bar.h{height:20px;width:46%;background:linear-gradient(90deg,var(--gold),#F2A20E);margin-bottom:12px}
+.w60{width:60%}.w70{width:70%}.w75{width:75%}.w80{width:80%}.w85{width:85%}.w90{width:90%}.w95{width:95%}
+.pp-skel .dots{display:flex;gap:12px;margin:10px 0}
+.pp-skel .dots b{width:30px;height:30px;border-radius:50%;border:3px solid var(--gold);background:rgba(253,181,37,.14)}
+.pp-skel .sig{margin-top:auto;height:2px;background:repeating-linear-gradient(90deg,rgba(27,25,27,.4) 0 8px,transparent 8px 14px)}
+.pp-skel .wm{width:70px;opacity:.9;margin-bottom:18px;align-self:flex-start}
+
+/* cover */
+.cover{transform-origin:0 50%;transform-style:preserve-3d}
+.cover-art{position:absolute;inset:0;border-radius:3px 14px 14px 3px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
+.cover-art .leather{position:absolute;inset:0;
+  background:
+    radial-gradient(120% 80% at 30% 15%,rgba(255,255,255,.10),transparent 55%),
+    repeating-linear-gradient(45deg,rgba(255,255,255,.018) 0 2px,transparent 2px 4px),
+    linear-gradient(145deg,#3A3438 0%,#1F1B1E 55%,#141114 100%)}
+.cover-art .frame{position:absolute;inset:26px;border:2px solid rgba(253,181,37,.7);border-radius:6px;box-shadow:inset 0 0 0 6px rgba(0,0,0,.0),0 0 0 1px rgba(253,181,37,.15)}
+.cover-art .frame::after{content:"";position:absolute;inset:8px;border:1px solid rgba(253,181,37,.35);border-radius:3px}
+.cover-art .emb{position:absolute;left:50%;top:124px;width:132px;margin-left:-66px;filter:drop-shadow(0 4px 14px rgba(253,181,37,.35))}
+.cover-art .ctitle{position:absolute;left:0;right:0;top:344px;text-align:center;font-weight:800;color:var(--gold);letter-spacing:.2em;line-height:1.45}
+.cover-art .ctitle span{display:block;font-size:30px;text-shadow:0 2px 0 rgba(0,0,0,.4)}
+.cover-art .ctitle span+span{font-size:25px;letter-spacing:.24em;color:var(--gold-hi)}
+.cover-art .foil{position:absolute;inset:0;opacity:0;mix-blend-mode:screen;
+  background:linear-gradient(112deg,transparent 35%,rgba(255,236,180,.55) 48%,rgba(255,255,255,.7) 50%,rgba(255,236,180,.55) 52%,transparent 65%);
+  background-size:260% 100%;background-position:130% 0}
+.cover-art .hinge{position:absolute;left:0;top:0;bottom:0;width:30px;background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,.0));z-index:4}
+.cover-art .hinge::after{content:"";position:absolute;left:24px;top:0;bottom:0;width:2px;background:rgba(255,255,255,.08)}
+.cover>.paper,.leaf>.paper{position:absolute;left:0;top:0;width:440px;height:600px}
+.leaf{transform-origin:0 50%;transform-style:preserve-3d}
+
+/* ---------- shared: headline typography ---------- */
+.title{position:absolute;left:1188px;top:330px;width:660px;padding-left:34px;opacity:0}
+.title::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:6px;border-radius:3px;background:linear-gradient(180deg,var(--gold-hi),var(--gold) 40%,var(--gold-lo));transform-origin:50% 0;transform:scaleY(var(--rule,0))}
+.title .ln{display:block}
+.title .l1{font-weight:800;font-size:74px;line-height:1.06;letter-spacing:-.015em;color:var(--ivory);text-shadow:0 6px 30px rgba(0,0,0,.45)}
+.title .l2{margin-top:22px;font-weight:700;font-size:44px;line-height:1.14;letter-spacing:-.005em;color:var(--gold)}
+.title .w{display:inline-block;will-change:transform,opacity,filter}
+
+/* ============================================================
+   SCENE 1 – Découverte du Passeport (00:00.00 – 00:07.52)
+   ============================================================ */
+#w-floor{position:absolute;left:-450px;top:940px;width:900px;height:110px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(0,0,0,.8),rgba(0,0,0,0));opacity:0;transform-origin:50% 50%}
+#s01 .title{z-index:8}
+#s01 .flash{z-index:20}
+
+
+/* ============================================================
+   FILM CAMERA + CAST + LAYERING (Scenes 2+)
+   ============================================================ */
+#world{z-index:0}
+#cam{position:absolute;inset:0;z-index:5;transform-origin:50% 50%}
+.logo{z-index:30}
+.scene{z-index:20}
+/* Amina (authored in camera-space px; her chin sits just above the held Passeport at the Scene-2 hold) */
+.cast{position:absolute;left:-440px;top:-1071px;width:800px;height:1400px;transform-origin:0 0;transform:scale(2.7);pointer-events:none;will-change:opacity,filter}
+.cast-svg{display:block;overflow:visible}
+
+/* Scene 2 – pictogram rows */
+#s02 .rows{position:absolute;left:1020px;top:170px;width:830px}
+#s02 .row{position:relative;display:flex;align-items:center;height:200px;margin-bottom:46px}
+#s02 .med{position:relative;flex:none;width:132px;height:132px;margin-right:38px;border-radius:50%;
+  background:radial-gradient(circle at 35% 28%,#3B3436,#171417 70%);box-shadow:0 0 0 3px var(--gold),0 0 0 11px rgba(253,181,37,.14),0 18px 44px rgba(0,0,0,.5),0 0 54px rgba(253,181,37,.32)}
+#s02 .med svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#s02 .rt{white-space:nowrap;font-weight:700;font-size:56px;letter-spacing:-.01em;color:var(--ivory);text-shadow:0 6px 28px rgba(0,0,0,.5)}
+#s02 .rt .w{display:inline-block}
+#s02 .rt .n{font-weight:800;font-size:118px;line-height:.8;color:var(--gold);margin-right:8px;vertical-align:-6px;text-shadow:0 0 36px rgba(253,181,37,.35)}
+#s02 .rt .dsh{color:var(--gold);margin-left:4px}
+#s02 .spineLine{position:absolute;left:65px;top:100px;width:3px;height:446px;border-radius:2px;transform-origin:50% 0;
+  background:linear-gradient(180deg,rgba(253,181,37,.9),rgba(253,181,37,.2))}
+
+/* Scene 3 */
+#stepdim{position:absolute;inset:0;z-index:19;pointer-events:none;position:absolute;inset:0;opacity:0;background:linear-gradient(90deg,rgba(9,8,10,.94) 0%,rgba(9,8,10,.88) 30%,rgba(9,8,10,.35) 46%,rgba(9,8,10,0) 56%)}
+.stepsec .s3text{position:absolute;left:110px;top:312px;width:700px}
+.stepsec .num{display:flex;align-items:baseline;gap:22px;font-weight:800;color:var(--gold);line-height:.9;text-shadow:0 0 50px rgba(253,181,37,.3)}
+.stepsec .nn{font-size:230px;letter-spacing:-.045em;display:inline-block}
+.stepsec .dsh{font-size:150px;display:inline-block}
+.stepsec .phr{margin-top:34px;font-weight:800;font-size:76px;line-height:1.08;letter-spacing:-.015em;color:var(--ivory);text-shadow:0 6px 30px rgba(0,0,0,.55)}
+.stepsec .phr .w{display:inline-block}
+
+#rail{position:absolute;right:104px;top:36px;width:560px;height:54px;opacity:0;display:flex;justify-content:space-between}
+#rail .rl,#rail .rlf{position:absolute;left:27px;right:27px;top:25px;height:4px;border-radius:2px;background:rgba(250,246,238,.22)}
+#rail .rlf{right:auto;width:0;background:var(--gold);box-shadow:0 0 14px rgba(253,181,37,.7)}
+#rail .st{position:relative;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:20px;font-weight:800;letter-spacing:.02em;
+  color:rgba(250,246,238,.6);background:#151215;border:3px solid rgba(250,246,238,.28)}
+
+/* Mon identité page */
+.idp{position:absolute;inset:0;padding:44px 38px 34px 46px;display:flex;flex-direction:column}
+.idp-head h3{font-size:27px;font-weight:800;letter-spacing:-.01em;color:var(--ink)}
+.idp-head .hl{display:block;width:92px;height:6px;border-radius:3px;margin:9px 0 18px;background:linear-gradient(90deg,var(--gold),#F2A20E);transform-origin:0 50%}
+.idp-top{display:flex;gap:20px}
+.idp-photo{width:116px;height:140px;border:2px solid rgba(27,25,27,.22);border-radius:6px;background:#EAE3D1;overflow:hidden;flex:none}
+.idp-photo svg{width:100%;height:100%;display:block}
+.idp-col{flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.idp .fld{margin-top:20px}.idp .idp-col .fld{margin-top:0}
+.idp .lab{display:block;height:8px;width:40%;border-radius:4px;background:rgba(27,25,27,.22);margin-bottom:6px}
+.idp .val{position:relative;height:38px;border-bottom:2px solid rgba(27,25,27,.32)}
+.idp .val .ink{position:absolute;left:6px;bottom:9px;height:13px;width:62%;border-radius:3px;transform-origin:0 50%;
+  background:repeating-linear-gradient(90deg,rgba(27,25,27,.78) 0 6px,transparent 6px 9px)}
+.idp .fld:nth-of-type(2) .ink{width:48%}.idp .val .ink.s{width:44%}.idp .val .ink.m{width:70%}.idp .val .ink.l{width:84%}
+.idp .val::after{content:"";position:absolute;right:2px;bottom:8px;width:22px;height:22px;border-radius:50%;transform:scale(var(--tick,0));
+  background:var(--gold) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M6 12.5l4 4 8-9' fill='none' stroke='%231B191B' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/80% no-repeat}
+.idp-sign{margin-top:auto}
+.idp-sign .lab{width:34%}
+.idp-sign .box{position:relative;height:118px;border:2px dashed rgba(27,25,27,.32);border-radius:12px;background:rgba(253,181,37,.04);overflow:hidden}
+.sigsvg{position:absolute;inset:6px 12px 6px 12px;width:calc(100% - 24px);height:calc(100% - 12px)}
+.sigsvg path{fill:none;stroke:#1B191B;stroke-width:3.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* ============================================================
+   SCENES 4-5 – shared depth / light layers
+   ============================================================ */
+#dark{position:absolute;inset:0;z-index:18;pointer-events:none;opacity:0;
+  background:radial-gradient(70% 80% at 62% 50%,rgba(8,7,9,.55),rgba(8,7,9,.82))}
+#veil{position:absolute;left:-900px;top:-300px;width:520px;height:1700px;z-index:21;pointer-events:none;opacity:0;mix-blend-mode:screen;
+  transform:rotate(16deg);
+  background:linear-gradient(90deg,rgba(255,226,150,0) 0%,rgba(255,226,150,.16) 30%,rgba(255,244,214,.62) 50%,rgba(255,226,150,.16) 70%,rgba(255,226,150,0) 100%);
+  filter:blur(6px)}
+.stepsec .num{overflow:visible}
+.stepsec .nn,.stepsec .dsh{will-change:transform,opacity}
+
+/* ---------- Scene 4 · « Conditions générales et engagements du détenteur » ---------- */
+.cp{position:absolute;inset:0;padding:44px 38px 30px 46px;display:flex;flex-direction:column}
+.cp-head h3{font-size:25px;line-height:1.18;font-weight:800;letter-spacing:-.01em;color:var(--ink)}
+.cp-head .hline{position:relative;display:inline-block}
+.cp-head .hl{display:block;width:92px;height:6px;border-radius:3px;margin:12px 0 22px;background:linear-gradient(90deg,var(--gold),#F2A20E);transform-origin:0 50%}
+.cp .cl{display:flex;gap:16px;margin-bottom:26px;position:relative}
+.cp .bu{flex:none;width:24px;height:24px;border-radius:50%;margin-top:0;border:3px solid var(--gold);background:rgba(253,181,37,.16)}
+.cp .tx{position:relative;flex:1}
+.cp .ln{position:relative;display:block;height:11px;border-radius:6px;background:rgba(27,25,27,.26);margin:0 0 11px}
+.cp .ln .mk{position:absolute;left:-5px;top:-5px;height:21px;width:calc(100% + 10px);border-radius:5px;transform-origin:0 50%;transform:scaleX(0);
+  background:linear-gradient(180deg,rgba(255,213,92,.82),rgba(253,181,37,.78));mix-blend-mode:multiply}
+.cp .cp-ack{margin-top:auto;display:flex;gap:16px;align-items:flex-start;padding:16px 16px;border:2px dashed rgba(27,25,27,.3);border-radius:12px;background:rgba(253,181,37,.04);position:relative}
+.cp .cb{flex:none;width:34px;height:34px;border-radius:8px;border:3px solid rgba(27,25,27,.5);position:relative;background:#fff}
+.cp .cb::after{content:"";position:absolute;inset:-3px;border-radius:8px;transform:scale(var(--tick,0));
+  background:var(--gold) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5.5 12.5l4.2 4.2 8.8-9.4' fill='none' stroke='%231B191B' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/82% no-repeat}
+.cp .pen{position:absolute;left:0;top:0;width:72px;height:72px;opacity:0;pointer-events:none;filter:drop-shadow(0 6px 8px rgba(0,0,0,.35));transform-origin:4px 68px}
+
+/* ---------- Scene 5 · the five values (examples of behaviours) ---------- */
+.vgrid{position:absolute;left:915px;top:196px;width:930px;height:760px;perspective:1700px}
+.vcard{position:absolute;width:292px;height:352px;border-radius:26px;padding:30px 26px;overflow:hidden;transform-style:preserve-3d;
+  background:linear-gradient(160deg,rgba(52,45,50,.96),rgba(24,21,25,.97));
+  box-shadow:0 0 0 2px rgba(253,181,37,.45),0 26px 60px rgba(0,0,0,.55);will-change:transform,opacity}
+.vcard:nth-child(1){left:0;top:0}.vcard:nth-child(2){left:319px;top:0}.vcard:nth-child(3){left:638px;top:0}
+.vcard:nth-child(4){left:159px;top:384px}.vcard:nth-child(5){left:478px;top:384px}
+.vcard .sw{position:absolute;left:0;top:0;right:0;height:7px;background:linear-gradient(90deg,var(--gold-lo),var(--gold),var(--gold-hi));transform-origin:0 50%;transform:scaleX(var(--sw,0))}
+.vcard .bdg{position:absolute;right:20px;top:22px;width:40px;height:40px;border-radius:50%;transform:scale(0);
+  background:var(--gold) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5.5 12.5l4.2 4.2 8.8-9.4' fill='none' stroke='%231B191B' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/76% no-repeat;box-shadow:0 0 22px rgba(253,181,37,.7)}
+.vcard .vc-ico{width:104px;height:104px;border-radius:50%;margin-bottom:22px;position:relative;
+  background:radial-gradient(circle at 35% 28%,#3B3436,#171417 70%);box-shadow:0 0 0 3px var(--gold),0 0 0 10px rgba(253,181,37,.13),0 0 34px rgba(253,181,37,.25)}
+.vcard .vc-ico svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.vcard h4{font-size:35px;font-weight:800;letter-spacing:-.015em;color:var(--ivory);margin-bottom:22px}
+.vcard .vc-b i{display:block;position:relative;height:13px;border-radius:7px;margin:0 0 15px 26px;background:rgba(250,246,238,.2);transform-origin:0 50%}
+.vcard .vc-b i::before{content:"";position:absolute;left:-26px;top:0;width:13px;height:13px;border-radius:50%;background:var(--gold)}
+.vcard .vc-b i:nth-child(1){width:90%}.vcard .vc-b i:nth-child(2){width:74%}.vcard .vc-b i:nth-child(3){width:82%}
+.stepsec .phr .ln{display:block}
+#s05 .phr .ln{display:block;margin-bottom:6px}
+.stepsec .nn{width:268px;text-align:left}
+#s04 .phr{font-size:70px}
+#rail .st{transition:none}
+.stepsec .phr{white-space:nowrap}
+
+/* ============================================================
+   SCENES 6-7
+   ============================================================ */
+/* ---- Scene 6 · behavioural grid (R4, under leaf 3) ---- */
+.ev{position:absolute;inset:0;padding:44px 38px 30px 46px;display:flex;flex-direction:column}
+.ev-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.ev-head .bar.h{width:52%;height:22px;margin:0}
+.ev-tick{width:46px;height:46px;border-radius:50%;transform:scale(var(--tick,0));
+  background:var(--gold) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5.5 12.5l4.2 4.2 8.8-9.4' fill='none' stroke='%231B191B' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/76% no-repeat;box-shadow:0 0 22px rgba(253,181,37,.6)}
+.ev-rows{display:flex;flex-direction:column;gap:14px}
+.er{display:flex;align-items:center;gap:14px;height:76px;padding:0 12px 0 8px;border-radius:16px;background:rgba(27,25,27,.05);position:relative}
+.er .eic{flex:none;position:relative;width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#3B3436,#171417 70%);box-shadow:0 0 0 2.5px var(--gold)}
+.er .eic svg{position:absolute;inset:-1px;width:100%;height:100%;overflow:visible;transform:scale(.62);transform-origin:50% 50%}
+.er .lb{flex:1;height:11px;border-radius:6px;background:rgba(27,25,27,.26)}
+.er .pips{display:flex;gap:8px}
+.er .pips b{width:24px;height:24px;border-radius:50%;border:3px solid var(--gold);background:rgba(253,181,37,.1)}
+.ev-foot{margin-top:auto;display:flex;flex-direction:column;gap:11px}
+.ev-foot .bar{display:block;height:11px;border-radius:6px;background:rgba(27,25,27,.14)}
+/* ---- Scene 6 · semester calendar (L4, back of leaf 3) ---- */
+.cal{position:absolute;inset:0;padding:44px 46px 30px 38px;display:flex;flex-direction:column}
+.cal-head{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.cal-ic{flex:none;position:relative;width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#3B3436,#171417 70%);box-shadow:0 0 0 2.5px var(--gold)}
+.cal-ic svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.cal-head .bar.h{width:46%;height:22px;margin:0}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.cal-grid .dy{aspect-ratio:1;border-radius:10px;background:rgba(27,25,27,.08);position:relative}
+.cal-grid .dy.hd{aspect-ratio:auto;height:11px;margin-bottom:2px;background:rgba(27,25,27,.2);border-radius:6px}
+.cal-grid .dy.gl{background:rgba(253,181,37,.28);box-shadow:inset 0 0 0 2.5px var(--gold)}
+.cal-grid .dy.gl::after{content:"";position:absolute;inset:0;border-radius:10px;background:var(--gold);opacity:var(--gf,0)}
+.sem{display:flex;gap:7px;margin-top:26px}
+.sem b{flex:1;height:18px;border-radius:9px;background:rgba(27,25,27,.13);position:relative;overflow:hidden}
+.sem b::after{content:"";position:absolute;inset:0;border-radius:9px;background:linear-gradient(90deg,var(--gold-lo),var(--gold),var(--gold-hi));transform-origin:0 50%;transform:scaleX(var(--f,0))}
+.cal-foot{margin-top:auto;display:flex;flex-direction:column;gap:11px}
+.cal-foot .bar{display:block;height:11px;border-radius:6px;background:rgba(27,25,27,.14)}
+
+/* ---- Scene 7 · the exchange ---- */
+#duo{position:absolute;inset:0;z-index:10;pointer-events:none}
+.duo-c{position:absolute;left:0;top:0;width:800px;height:1400px;transform-origin:0 0;opacity:0;will-change:transform,opacity}
+#s07 .s3text{left:110px;top:112px;width:1300px;display:flex;align-items:center;gap:22px}
+#s07 .num{gap:12px}
+#s07 .nn{font-size:132px;width:176px}
+#s07 .dsh{font-size:88px}
+#s07 .phr{margin-top:0;font-size:54px;white-space:nowrap}
+#s07 .phr .ln{display:inline}
+.pcard{position:absolute;top:318px;width:440px;height:330px;border-radius:26px;padding:28px 28px;overflow:hidden;opacity:0;
+  background:linear-gradient(160deg,rgba(54,47,52,.97),rgba(24,21,25,.98));box-shadow:0 0 0 2px rgba(253,181,37,.5),0 26px 60px rgba(0,0,0,.55);will-change:transform,opacity}
+#pcL{left:468px}#pcR{left:1012px}
+.pcard .sw{position:absolute;left:0;top:0;right:0;height:7px;background:linear-gradient(90deg,var(--gold-lo),var(--gold),var(--gold-hi));transform-origin:0 50%;transform:scaleX(var(--sw,0))}
+.pc-h{display:flex;align-items:center;gap:18px;margin-bottom:22px}
+.pc-ic{flex:none;position:relative;width:78px;height:78px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#3B3436,#171417 70%);box-shadow:0 0 0 3px var(--gold),0 0 0 9px rgba(253,181,37,.13)}
+.pc-ic svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.pcard h4{font-size:35px;line-height:1.08;font-weight:800;letter-spacing:-.015em;color:var(--ivory)}
+.pc-i .it{display:flex;align-items:center;gap:16px;margin-bottom:17px}
+.pc-i .ln{flex:1;height:13px;border-radius:7px;background:rgba(250,246,238,.22);transform-origin:0 50%}
+.pc-i .it:nth-child(2) .ln{flex:.82}.pc-i .it:nth-child(3) .ln{flex:.92}
+.pc-i .tk{flex:none;width:30px;height:30px;border-radius:50%;background:var(--gold) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5.5 12.5l4.2 4.2 8.8-9.4' fill='none' stroke='%231B191B' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/76% no-repeat}
+.pc-i .tk.ar{background:rgba(253,181,37,.12) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 19V6M6 11.5l6-6 6 6' fill='none' stroke='%23FDB525' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/76% no-repeat;box-shadow:inset 0 0 0 2.5px var(--gold)}
+.orb{position:absolute;left:0;top:0;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;opacity:0;pointer-events:none;
+  background:radial-gradient(circle,#FFF3CC,#FDB525 55%,rgba(253,181,37,0) 72%);box-shadow:0 0 18px rgba(253,181,37,.9)}
+#bigtick{position:absolute;left:885px;top:386px;width:150px;height:150px;opacity:0;pointer-events:none}
+#bigtick .disc{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 36% 30%,#FFE59E,#FDB525 60%,#E39A12);box-shadow:0 0 70px rgba(253,181,37,.75),0 0 0 6px rgba(255,255,255,.12)}
+#bigtick svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#bigtick .rg{position:absolute;inset:0;border-radius:50%;border:3px solid var(--gold);opacity:0}
+#topdim{position:absolute;inset:0;z-index:19;pointer-events:none;opacity:0;
+  background:linear-gradient(180deg,rgba(9,8,10,.92) 0,rgba(9,8,10,.72) 150px,rgba(9,8,10,0) 285px)}
+.er .eic svg{transform:none!important}
+.er{height:70px;gap:14px}.ev-rows{gap:12px}
+.ev .bar.h,.cal .bar.h{display:block;border-radius:6px;background:linear-gradient(90deg,var(--gold),#F2A20E)}
+#s06 .s3text,#s07 .s3text{left:110px;top:112px;width:1500px;display:flex;align-items:center;gap:22px}
+#s06 .num,#s07 .num{gap:12px}
+#s06 .nn,#s07 .nn{font-size:132px;width:176px}
+#s06 .dsh,#s07 .dsh{font-size:88px}
+#s06 .phr,#s07 .phr{margin-top:0;font-size:54px;white-space:nowrap}
+#s06 .phr .ln,#s07 .phr .ln{display:inline}
+.ripple{position:absolute;left:0;top:0;width:260px;height:260px;margin:-130px 0 0 -130px;border-radius:50%;border:4px solid var(--gold);opacity:0;pointer-events:none;box-shadow:0 0 40px rgba(253,181,37,.6),inset 0 0 40px rgba(253,181,37,.35)}
+#duo{z-index:4}
+.er .eic svg{transform:scale(1.32)!important;transform-origin:50% 50%}
+#s06 .s3text,#s07 .s3text{top:160px}
+#pcL{left:440px}#pcR{left:1040px}
+#s07 .pcard{top:300px}
+/* Scene 7 refinements */
+#s07 .phr .ln + .ln{margin-left:.32em}
+#s07 .pcard{top:372px}
+#bigtick{top:470px}
+
+/* ---- Scene 8 · conclusion + end card ---- */
+.s8v{position:absolute;left:500px;width:1100px;height:100px;display:flex;align-items:center;justify-content:flex-start;gap:30px;opacity:0}
+#s8v1{top:440px}#s8v2{top:565px}#s8v3{top:690px}
+.s8m{flex:none;position:relative;width:84px;height:84px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#3B3436,#171417 70%);box-shadow:0 0 0 3px var(--gold),0 0 0 10px rgba(253,181,37,.14),0 0 40px rgba(253,181,37,.35)}
+.s8m svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.s8t{position:relative;display:block}
+.s8x{display:block;font-weight:800;font-size:84px;line-height:1.05;letter-spacing:-.02em;color:var(--ivory);text-shadow:0 6px 30px rgba(0,0,0,.5);white-space:nowrap}
+.s8u{position:absolute;left:0;right:0;bottom:-6px;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--gold-lo),var(--gold),var(--gold-hi));transform-origin:0 50%;transform:scaleX(0)}
+.s8c{position:absolute;left:0;width:1920px;text-align:center;opacity:0;white-space:nowrap}
+#s8top{top:318px;font-weight:700;font-size:38px;letter-spacing:.3em;color:var(--ivory);text-shadow:0 4px 24px rgba(0,0,0,.6)}
+#s8tag{top:700px;font-weight:600;font-size:54px;letter-spacing:-.005em;color:var(--ivory);text-shadow:0 6px 28px rgba(0,0,0,.6)}
+#s8tag .w{display:inline-block}
+#s8sig{top:830px;font-weight:800;font-size:50px;letter-spacing:.34em;padding-left:.34em;color:var(--gold)}
+#s8sig .rb,#s8sig .in{display:inline-block;will-change:transform,opacity,filter}
+#s8sig .rb{color:var(--ivory)}
+#s8sig .in{color:var(--gold);text-shadow:0 0 36px rgba(253,181,37,.55)}
